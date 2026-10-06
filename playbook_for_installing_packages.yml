@@ -1,0 +1,10 @@
+- name: Ansible playbook for installing packages
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Installing packages
+      apt:
+        name: tree
+        state: present
+        update_cache: yes

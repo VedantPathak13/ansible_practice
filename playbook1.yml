@@ -1,0 +1,10 @@
+- name: Hello
+  hosts: servers
+  become: yes
+
+  vars:
+    name: "Hello Vedant"
+
+  tasks:
+    - name: Greetings
+      command: echo " { name } "

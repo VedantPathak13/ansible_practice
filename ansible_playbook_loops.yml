@@ -1,0 +1,22 @@
+- name: Loops to install multiple packages in one script
+  hosts: servers
+  become: yes
+
+  vars:
+    package_to_install:
+      - git
+      - zip
+      - unzip
+      - apache2
+
+  tasks:
+    - name: Installing the packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ package_to_install }}"
+
+    - name: show the messages
+      loop: "{{ package_to_install }}"
+      debug:
+        msg: "Installing {{ item }}"
